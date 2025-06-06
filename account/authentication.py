@@ -3,10 +3,6 @@ from account.models import Profile
 
 
 class EmailAuthBackend:
-    """
-    Authenticate using an e-mail address.
-    """
-
     def authenticate(self, request, username=None, password=None):
         try:
             user = User.objects.get(email=username)
@@ -24,7 +20,4 @@ class EmailAuthBackend:
 
 
 def create_profile(backend, user, *args, **kwargs):
-    """
-    Create user profile for social authentication
-    """
     Profile.objects.get_or_create(user=user)
